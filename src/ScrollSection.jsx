@@ -6,6 +6,7 @@ import styled from "styled-components";
 const ScrollSection = () => {
   const scrollBarRef = useRef(null);
   const sliderRef = useRef(null);
+  //context
   const {
     currentValue,
     setCurrentValue,
@@ -13,9 +14,12 @@ const ScrollSection = () => {
     setSelectedvalue,
     tagsObj,
   } = useContext(valueContext);
+
+  //customer hook
   const [
     getLatestSliderPos,
     showLabel,
+    displayLabel,
     clckToPos,
     isDrag,
     setIsDrag,
@@ -30,6 +34,9 @@ const ScrollSection = () => {
 
     //確認需要顯示的標籤
     showLabel(currentValue);
+
+    if (displayLabel && displayLabel.length > 1) {
+    }
 
     //設定點擊滑動
     const handleUpdatePosition = (e) => {
@@ -58,7 +65,7 @@ const ScrollSection = () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleLeaveSlider);
     };
-  }, [tagsObj, isDrag, selectedValue, currentValue]);
+  }, [tagsObj, isDrag, currentValue]);
 
   return (
     <div
@@ -74,6 +81,8 @@ const ScrollSection = () => {
                 setCurrentValue(tag);
                 setSelectedvalue(tag);
               }}
+              displaylabel={displayLabel}
+              tag={tag}
             >
               {tag}
             </StyledLabel>
@@ -94,16 +103,28 @@ const StyledTag = styled.span`
   position: absolute;
   top: ${({ top }) => top}%;
 `;
-//
 const StyledLabel = styled.div`
-  /* display: none; */
+  display: ${({ displaylabel, tag }) => {
+    console.log(tag);
+    if (displaylabel.includes(tag)) {
+      return "block";
+    } else {
+      return "none";
+    }
+  }};
   width: 40px;
   line-height: 30px;
   background-color: #444442;
   text-align: center;
   color: #fff;
   position: absolute;
-  left: -100%;
+  left: ${({ displaylabel, tag }) => {
+    if (displaylabel.indexOf(tag) == 1) {
+      return "-160";
+    } else {
+      return "-80";
+    }
+  }}%;
   top: -15px;
   border-radius: 5px;
 `;

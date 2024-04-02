@@ -40,12 +40,12 @@ const useSliderServices = (scrollBarRef, sliderRef) => {
   //顯示標籤
   const showLabel = (currentValue) => {
     if (currentValue) {
-      const displayTags = tagsObj.tags.map((tag) => {
+      const displayTags = tagsObj.tags.filter((tag) => {
         if (currentValue - tag < 10 && currentValue - tag > -10) {
           return tag;
         }
       });
-      console.log(displayTags);
+      setDisplayLabel(displayTags);
     }
   };
 
@@ -81,6 +81,7 @@ const useSliderServices = (scrollBarRef, sliderRef) => {
   return [
     getLatestSliderPos,
     showLabel,
+    displayLabel,
     clckToPos,
     isDrag,
     setIsDrag,
