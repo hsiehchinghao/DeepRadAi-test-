@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
-import { valueContext } from "./context/valueContext";
+import { valueContext } from "../context/valueContext";
 import useSliderServices from "./useSliderServices";
 import styled from "styled-components";
 
@@ -105,7 +105,6 @@ const StyledTag = styled.span`
 `;
 const StyledLabel = styled.div`
   display: ${({ displaylabel, tag }) => {
-    console.log(tag);
     if (displaylabel.includes(tag)) {
       return "block";
     } else {

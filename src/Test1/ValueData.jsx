@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { valueContext } from "./context/valueContext";
+import { valueContext } from "../context/valueContext";
 
 const ValueData = () => {
   const { currentValue, selectedValue } = useContext(valueContext);

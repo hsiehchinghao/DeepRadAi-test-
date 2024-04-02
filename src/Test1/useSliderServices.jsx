@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { valueContext } from "./context/valueContext";
+import { valueContext } from "../context/valueContext";
 
 const useSliderServices = (scrollBarRef, sliderRef) => {
   //取得區域狀態及function
@@ -34,7 +34,6 @@ const useSliderServices = (scrollBarRef, sliderRef) => {
   const getLatestSliderPos = (currentValue, scrollBarRef, sliderRef) => {
     const data = ((currentValue * 100) / 255).toFixed(0);
     sliderRef.current.style.top = `${data}%`;
-    console.log(data);
   };
 
   //顯示標籤
