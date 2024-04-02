@@ -18,7 +18,11 @@ const ValueContextProvider = ({ children }) => {
 
   useEffect(() => {
     //...fetchData...
-    setList([""]);
+    setList([
+      { id: "001", title: "嗯嗯", isUpdate: false },
+      { id: "002", title: "呵呵", isUpdate: false },
+      { id: "003", title: "去洗澡", isUpdate: false },
+    ]);
   }, []);
 
   const value = {
@@ -27,6 +31,8 @@ const ValueContextProvider = ({ children }) => {
     selectedValue,
     setSelectedvalue,
     tagsObj,
+    list,
+    setList,
   };
   return (
     <valueContext.Provider value={value}>{children}</valueContext.Provider>

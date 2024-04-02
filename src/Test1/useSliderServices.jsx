@@ -73,7 +73,6 @@ const useSliderServices = (scrollBarRef, sliderRef) => {
   const handleSlider = (e, scrollBarRef, sliderRef, isDrag) => {
     sliderRef.current.style.transition = "none";
     const updatePos = currentPos(e, scrollBarRef, sliderRef);
-    console.log(updatePos);
     sliderRef.current.style.top = `${updatePos}%`;
   };
 

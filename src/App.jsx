@@ -6,7 +6,6 @@ import ValueData from "./Test1/ValueData";
 import ScrollSection from "./Test1/ScrollSection";
 //Test2
 import List from "./Test2/List";
-import Form from "./Test2/Form";
 function App() {
   return (
     <>
@@ -19,8 +18,7 @@ function App() {
           </div>
           <div className="test2">
             <h1>Test 2</h1>
-            <List></List>
-            <Form></Form>
+            <List />
           </div>
         </main>
       </ValueContextProvider>
