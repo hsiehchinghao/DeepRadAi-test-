@@ -1,0 +1,75 @@
+@mixin flexbox($dr, $jc, $ai) {
+  display: flex;
+  flex-direction: $dr;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+* {
+  background-color: #ddd;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: 2px;
+}
+.App {
+  width: 100svw;
+  height: 100svh;
+  padding: 30px;
+  @include flexbox(column, space-evenly, center);
+  .value-data-section {
+    height: 200px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    text-align: center;
+    .value-data-section__current-value {
+      padding: 20px;
+      color: #ddd;
+      background-color: #333;
+      margin-bottom: 30px;
+      border-radius: 20px;
+    }
+    .value-data-section__selected-value {
+      padding: 20px;
+      background-color: #888;
+      border-radius: 20px;
+    }
+  }
+
+  .scroll-bar {
+    height: 400px;
+    width: 60px;
+    background-color: #000;
+    position: relative;
+    transition: 0.3s;
+    border-radius: 5px;
+    border: 2px solid #666;
+    cursor: pointer;
+
+    .scroll-section__slider {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      z-index: 2;
+      border-radius: 50%;
+      border: 1.5px solid #222;
+      transform: translateX(50%) translateY(-50%);
+      @include flexbox(column, center, center);
+      cursor: pointer;
+      &::after {
+        content: "";
+        width: 70%;
+        height: 70%;
+        border-radius: 50%;
+        background-color: #ccc;
+      }
+    }
+  }
+  .active {
+    width: 80px;
+    transform: translateX(-10px);
+  }
+}
